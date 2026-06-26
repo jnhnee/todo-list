@@ -1,6 +1,8 @@
 export default class Todo {
-    constructor(name) {
+    constructor(name, description, dateDue) {
         this.name = name;
-        this.todos = [];
+        this.description = description;
+        this.dateDue = dateDue;
+        this.completed = false;
     }
 }
