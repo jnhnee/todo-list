@@ -1,18 +1,16 @@
 // App logic stuff only
-
 import Todo from "./Todo";
 import Project from "./Project";
 
 const projects = [];
 
 function addProject(name) {
-  const project = new Project(name);
-  projects.push(project);
+  projects.push(new Project(name));
 }
 
-function addTodo(project, title) {
-  const todo = new Todo(title);
-  project.todos.push(todo);
+function addTodo(project, name, description, dueDate) {
+  project.todos.push(new Todo(name, description, dueDate));
 }
 
-export { addProject, addTodo, projects };
+
+export { projects, addProject, addTodo };
