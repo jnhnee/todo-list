@@ -1,5 +1,8 @@
 import "./styles.css";
 
-const content = document.querySelector("#content");
+import { projects, addProject } from "./app.js";
+import { render } from "./render.js";
 
-content.textContent = "Todo List";
+addProject("Projecttesttestest");
+render(projects);
+

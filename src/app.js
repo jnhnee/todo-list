@@ -1,6 +1,6 @@
 // App logic stuff only
-import Todo from "./Todo";
-import Project from "./Project";
+import Todo from "./Todo.js";
+import Project from "./Project.js";
 
 const projects = [];
 
