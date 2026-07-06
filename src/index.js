@@ -26,3 +26,16 @@ addProjectBtn.addEventListener("click", () => {
     projects.push(project);
     render(projects);
 });
+
+const addTodoBtn = document.querySelector("#add-todo-btn");
+addTodoBtn.addEventListener("click", () => {
+    const todo = new Todo(
+        "Todo Name",
+        "Description",
+        "N/A",
+        "10"
+    );
+
+    testProject.addTodo(todo);
+    render(projects);
+});
