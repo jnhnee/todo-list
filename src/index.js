@@ -6,6 +6,7 @@ import render from "./render.js";
 const projects = [];
 
 const testProject = new Project("Build a Computer!");
+
 testProject.addTodo(
     new Todo("Buy CPU", "AMD 9800X3D", "N/A", "10")
 );
@@ -18,12 +19,22 @@ testProject.addTodo(
     new Todo("Buy RAM", "Corsair 64GB", "N/A", "10")
 );
 projects.push(testProject);
+
+let currProject = projects[0];
+
 render(projects);
 
 const addProjectBtn = document.querySelector("#add-project-btn");
 addProjectBtn.addEventListener("click", () => {
-    const project = new Project(prompt("Project Name: "));
+    const name = prompt("Project Name:");
+
+    if (!name) return;
+
+    const project = new Project(name);
+
     projects.push(project);
+    currProject = project;
+
     render(projects);
 });
 
@@ -36,6 +47,6 @@ addTodoBtn.addEventListener("click", () => {
         "10"
     );
 
-    testProject.addTodo(todo);
+    currProject.addTodo(todo);
     render(projects);
 });
