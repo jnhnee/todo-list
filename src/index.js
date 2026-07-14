@@ -22,7 +22,13 @@ projects.push(testProject);
 
 let currProject = projects[0];
 
-render(projects);
+function select(project) {
+    currProject = project;
+    render(projects, currProject, select);
+}
+
+render(projects, currProject, select);
+
 
 const addProjectBtn = document.querySelector("#add-project-btn");
 addProjectBtn.addEventListener("click", () => {
@@ -35,7 +41,7 @@ addProjectBtn.addEventListener("click", () => {
     projects.push(project);
     currProject = project;
 
-    render(projects);
+    render(projects, currProject);
 });
 
 const addTodoBtn = document.querySelector("#add-todo-btn");
@@ -48,5 +54,5 @@ addTodoBtn.addEventListener("click", () => {
     );
 
     currProject.addTodo(todo);
-    render(projects);
+    render(projects, currProject, select);
 });
