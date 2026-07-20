@@ -29,8 +29,34 @@ function select(project) {
 
 render(projects, currProject, select);
 
+const todoForm = document.querySelector("#todo-form");
+const todoTitle = document.querySelector("#todo-title");
+const todoDescription = document.querySelector("#todo-description");
+const todoDate = document.querySelector("#todo-date");
+const todoPriority = document.querySelector("#todo-priority");
+
+todoForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const title = todoTitle.value;
+    const description = todoDescription.value;
+    const dueDate = todoDate.value;
+    const priority = todoPriority.value;
+    
+    const todo = new Todo(
+        title,
+        description,
+        dueDate,
+        priority
+    );
+
+    currProject.addTodo(todo);
+    render(projects, currProject, select);
+    todoForm.reset();
+});
 
 const addProjectBtn = document.querySelector("#add-project-btn");
+
 addProjectBtn.addEventListener("click", () => {
     const name = prompt("Project Name:");
 
@@ -41,18 +67,5 @@ addProjectBtn.addEventListener("click", () => {
     projects.push(project);
     currProject = project;
 
-    render(projects, currProject);
-});
-
-const addTodoBtn = document.querySelector("#add-todo-btn");
-addTodoBtn.addEventListener("click", () => {
-    const todo = new Todo(
-        "Todo Name",
-        "Description",
-        "N/A",
-        "10"
-    );
-
-    currProject.addTodo(todo);
     render(projects, currProject, select);
 });
